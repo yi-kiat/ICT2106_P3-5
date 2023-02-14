@@ -2,7 +2,6 @@ import Nav, {  } from './Components/nav'
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import React, { useEffect } from 'react';
 import Login from './Pages/Login';
-import Register from './Pages/Register';
 import useToken from './Components/useToken';
 import usePerms from './Components/usePerms';
 import Logout from './Pages/Logout';
@@ -13,22 +12,10 @@ import userImg from "./Assets/nav/user.png";
 
 import logoutImg from "./Assets/nav/logout.png";
 
-import Users from './Pages/Users';
-import Employees from './Pages/Employee/Employees';
-import Volunteer from './Pages/Volunteer/Volunteer';
-import VolunteerRegistration from './Pages/Volunteer/VolunteerRegistration';
-import Donors from './Pages/Donor/Donor';
-import Donations from './Pages/Donor/Donations';
-import ServiceCenters from './Pages/Employee/ServiceCenters';
-import VolunteerWork from './Pages/Volunteer/VolunteerWork';
-import Project from './Pages/Project/Project';
-import Expense from './Pages/Expense/Expense';
 import Request from './Pages/Request/Request';
 import Feedback from './Pages/Feedback/Feedback';
-import Permissions from './Pages/Admin/Permissions';
 
 import Home  from "./Pages/Home"
-import VolunteerHome from "./Pages/Volunteer/volunteerHome"
 
 
 /* function getToken() {  
@@ -68,16 +55,8 @@ export default function App() {
             <SlideDrawer show={drawerOpen} toggle={drawerToggleClickHandler} direction="top">
               <DrawerSection label={"Modules"}>
                 <DrawerItem label="Dashboard" to={"/"} logo={homeImg}></DrawerItem>
-                <DrawerItem label="Volunteer Registration" to={"volunteer-registration"} logo={homeImg}></DrawerItem>
               </DrawerSection>
             </SlideDrawer>
-            {backdrop}
-            <Routes>
-              <Route path="/" element={
-                <Login setToken={setToken} setPerms={setPerms}></Login>}></Route>
-              <Route path="/Register" element={<Register />}></Route>
-              <Route path="/volunteer-registration" element={<VolunteerRegistration setToken={setToken} setPerms={setPerms}/>}></Route>
-            </Routes>
           </div>
         </div>
     )
@@ -91,35 +70,14 @@ export default function App() {
             <SlideDrawer show={drawerOpen} toggle={drawerToggleClickHandler} direction={"top"}>
               
               <DrawerSection label={"Modules"}>
-                <DrawerItem label="Users" to={"/"} logo={userImg} currentActive = {active} setActive={setActive}></DrawerItem>
-                <DrawerItem label="Employees" to={"/Employees"} logo={userImg} currentActive = {active} setActive={setActive}></DrawerItem>
-                <DrawerItem label="Volunteers" to={"/Volunteers"} logo={userImg} currentActive = {active} setActive={setActive}></DrawerItem>
-                <DrawerItem label="Volunteer Work" to={"/VolunteerWork"} logo={userImg} currentActive = {active} setActive={setActive}></DrawerItem>
-                <DrawerItem label="Donors" to={"/Donors"} logo={userImg} currentActive = {active} setActive={setActive}></DrawerItem>
-                <DrawerItem label="Donations" to={"/Donations"} logo={userImg} currentActive = {active} setActive={setActive}></DrawerItem>
-                <DrawerItem label="Service Center" to={"/ServiceCenters"} logo={userImg} currentActive = {active} setActive={setActive}></DrawerItem>
-                <DrawerItem label="Project" to={"/Project"} logo={userImg} currentActive = {active} setActive={setActive}></DrawerItem>
-                <DrawerItem label="Expense" to={"/Expense"} logo={userImg} currentActive = {active} setActive={setActive}></DrawerItem>
-                <DrawerItem label="Permissions" to={"/Permissions"} logo={userImg} currentActive = {active} setActive={setActive}></DrawerItem>
-                <DrawerItem label="Request" to={"/Request"} logo={userImg} currentActive = {active} setActive={setActive}></DrawerItem>
+                <DrawerItem label="Request" to={"/"} logo={userImg} currentActive = {active} setActive={setActive}></DrawerItem>
                 <DrawerItem label="Feedback" to={"/Feedback"} logo={userImg} currentActive = {active} setActive={setActive}></DrawerItem>
                 <DrawerItem label="Logout" to={"/Logout"} logo={logoutImg}></DrawerItem>
               </DrawerSection>
             </SlideDrawer>
             
             <Routes>
-              <Route path="/" element={<Users user={token} permissions = {JSON.parse(perms)}/>}/>
-              <Route path="/Employees" element={<Employees user={token} permissions = {JSON.parse(perms)}/>}/>
-              <Route path="/Volunteers" element={<Volunteer user={token} permissions = {JSON.parse(perms)}/>}/>
-              <Route path="/volunteer-registration" element={<VolunteerRegistration user={token} permissions = {JSON.parse(perms)}/>}/>
-              <Route path="/Donors" element={<Donors user={token} permissions = {JSON.parse(perms)}></Donors>}/>
-              <Route path="/Donations" element={<Donations user={token} permissions = {JSON.parse(perms)}></Donations>}/>
-              <Route path="/VolunteerWork" element={<VolunteerWork user={token} permissions = {JSON.parse(perms)}/>}/>
-              <Route path="/ServiceCenters" element={<ServiceCenters user={token} permissions = {JSON.parse(perms)}/>}/>
-              <Route path="/Project" element={<Project user={token} permissions = {JSON.parse(perms)}/>}/>
-              <Route path="/Expense" element={<Expense user={token} permissions = {JSON.parse(perms)}/>}/>
-              <Route path="/Permissions" element={<Permissions user={token} permissions = {JSON.parse(perms)}/>}/>
-              <Route path="/Request" element={<Request user={token} permissions = {JSON.parse(perms)}/>}/>
+              <Route path="/" element={<Request user={token} permissions = {JSON.parse(perms)}/>}/>
               <Route path="/Feedback" element={<Feedback user={token} permissions = {JSON.parse(perms)}/>}/>
               <Route path="/Logout" element={<Logout logout={logout} clearPerms={clearPerms}></Logout>}/>
 
