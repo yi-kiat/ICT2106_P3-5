@@ -342,6 +342,10 @@ export default class DatapageLayout extends React.Component {
         )
     }
 }
+DatapageLayout.defaultProps = {
+    hasFields: true
+}
+
 export class TableHeader extends React.Component {
     constructor(props) {
         super(props);
